@@ -1,29 +1,26 @@
-# Descrición
+# IA Avanzada Simple Navigation
 
-Emprega este arquivo para describir os cambios do teu proxecto.
+## Modificaciones
 
-Utiliza o formato en markdown coas marcas básicas que aparcen no seguinte exemplo:
+### Agente nuevo
 
-# Título principal
-## Subtítulo
+Se añade un GameObject 3D tipo Sphere llamado **Student** con los siguientes componentes:
 
-Texto normal con **negriña** e *cursiva*.
+- **Nav Mesh Agent**
+  - Tipo de agente: Humanoid for Navigation Sample
+  - Resto de valores iguales que el GameObject llamado **Agent** excepto:
+    - Obstacle Avoidance:
+      - Radius: Se añade el valor 3 para evitar que choque con otros agentes.
+    - Path Finding:
+      - Area Mask: Solo podrá transitar por Walkable y Jump
+- Script **Simple Navigation Agent Controller**
 
-- Lista 1
-- Lista 2
+### Obstáculo
 
-[Ligazón](https://exemplo.com)
+Se añade un GameObject 3D tipo Cubre llamado **Wall-not-student** dentro de la jerarquía **Level**.
 
+La función de este obstáculo es que los agentes tipo **Humanoid** puedan atravesarlo pero los agentes tipo **Humanoid for Navigation Sample** lo tengan que bordear
 
-```csharp
-using UnityEngine;
+Una vez añadido el obsttáculo a la jerarquía de **Level**, se modifica el componente **Nav Mesh Surface** que afecta a los agentes tipo **Humanoid for Navigation Sample** pulsando el botón **Bake**.
 
-public class OlaMundo : MonoBehaviour
-{
-    void Start()
-    {
-        Debug.Log("Ola, mundo desde C#!");
-    }
-}
-
-```
+Para diferenciar este obstáculo se añade el material **Wall** al igual que el resto de obstáculos.
